@@ -1,0 +1,49 @@
+.posted-tweets {
+  margin-top:10px;
+  margin-right: 2em;
+  margin-left: 2em;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.posted-tweets header {
+  background-color:#eee;
+  height: 80px;
+  padding:10px;
+}
+
+.posted-tweets img {
+  border-radius: 5px;
+  height: 60px;
+  width: 60px;
+  margin: 0 auto;
+}
+
+.name {
+  vertical-align: top;
+  margin-left: 10px;
+  font-size: 175%;
+  font-weight: 700;
+  color: grey;
+}
+
+.handle {
+  float: right;
+  margin-top: 10px;
+  color: #A0A0A0;
+}
+
+.posted-tweets article {
+  padding:10px;
+  height: 100px;
+  line-height: 80px;
+
+}
+
+.posted-tweets footer {
+  font-size: 50%;
+  padding:10px;
+  border-top: 1px solid #ccc;
+}
+
