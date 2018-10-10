@@ -43,11 +43,8 @@ article.tweet .handle {
 }
 
 article.tweet .tweetbody{
-  padding:10px;
-  height: 100px;
-  line-height: 80px;
+  padding:10px;;
   opacity: 1;
-
 }
 
 article.tweet footer {
