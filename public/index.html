@@ -47,13 +47,41 @@
       </section>
 
       <section class="posted-tweets">
-        <header>
-          <img src="https://assets.bizjournals.com/southflorida/blog/bill_fields_lr_c.jpg?v=1">
-          <span class="name">Bill Fields</span>
-          <span class="handle">@MrFields</span>
-        </header>
-        <article>A tweet here</article>
-        <footer>10 days ago</footer>
+
+        <article class="tweet">
+          <header>
+            <img src="https://assets.bizjournals.com/southflorida/blog/bill_fields_lr_c.jpg?v=1">
+            <span class="name">Bill Fields</span>
+            <span class="handle">@MrFields</span>
+          </header>
+          <span class="tweetbody">A tweet here</span>
+          <footer>
+            <span class="posted">9 days ago</span>
+            <span class="icons">
+              <ion-icon name="flag"></ion-icon>
+              <ion-icon name="repeat"></ion-icon>
+              <ion-icon name="heart"></ion-icon>
+            </span>
+          </footer>
+        </article>
+
+        <article class="tweet">
+          <header>
+            <img src="https://pbs.twimg.com/profile_images/668278197981581313/0I_-VP6j_400x400.jpg">
+            <span class="name">John Fields</span>
+            <span class="handle">@MrJFields</span>
+          </header>
+          <span class="tweetbody">A tweet also here</span>
+          <footer>
+            <span class="posted">10 days ago</span>
+            <span class="icons">
+              <ion-icon name="flag"></ion-icon>
+              <ion-icon name="repeat"></ion-icon>
+              <ion-icon name="heart"></ion-icon>
+            </span>
+          </footer>
+        </article>
+
       </section>
 
     </main>
@@ -68,6 +96,9 @@
 
   <!-- Character Counter JS -->
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+  <!-- Icons JS -->
+  <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
 
 
 </html>

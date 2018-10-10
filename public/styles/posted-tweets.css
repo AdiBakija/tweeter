@@ -3,24 +3,32 @@
   margin-right: 2em;
   margin-left: 2em;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  z-index: 1000;
 }
 
-.posted-tweets header {
+article.tweet {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+
+
+article.tweet header {
   background-color:#eee;
   height: 80px;
   padding:10px;
 }
 
-.posted-tweets img {
+article.tweet img {
   border-radius: 5px;
   height: 60px;
   width: 60px;
   margin: 0 auto;
 }
 
-.name {
+article.tweet .name {
   vertical-align: top;
   margin-left: 10px;
   font-size: 175%;
@@ -28,22 +36,40 @@
   color: grey;
 }
 
-.handle {
+article.tweet .handle {
   float: right;
   margin-top: 10px;
   color: #A0A0A0;
 }
 
-.posted-tweets article {
+article.tweet .tweetbody{
   padding:10px;
   height: 100px;
   line-height: 80px;
+  opacity: 1;
 
 }
 
-.posted-tweets footer {
+article.tweet footer {
   font-size: 50%;
   padding:10px;
   border-top: 1px solid #ccc;
+  opacity: 1;
 }
 
+ion-icon {
+  float: right;
+  height: 15px;
+  width: 15px;
+  color: #00a087;
+  opacity: 0;
+}
+
+article.tweet:hover {
+  border: 1px solid black;
+  opacity: 1;
+}
+
+article.tweet:hover ion-icon {
+  opacity: 1;
+}
