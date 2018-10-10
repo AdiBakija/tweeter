@@ -94,4 +94,16 @@ $(document).ready(function() {
   // At some point the data passed will be an actual dynamic database of tweets.
   renderTweets(data);
 
+  // Submit form handler for post requests
+  $("#submit-tweet").submit(function(event) {
+    // Check to see that the submit went through
+    console.log("Handler for .submit() called.");
+    // Prevent the submit buttons default properties from occurring.
+    event.preventDefault();
+    //Serialized data.  Should return "text=<whatever was typed>" if console logged.
+    var $serialized = $(this).serialize();
+    //Post to serialized data to the /tweets/ URL
+    $.post("/tweets/", $serialized);
+
+  });
 });
