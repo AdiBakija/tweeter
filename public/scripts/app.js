@@ -19,6 +19,12 @@ $(document).ready(function() {
 
   };
 
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   // Helper function that constructs NEW tweet elements based on DOM.
   function createTweetElement (tweetData) {
     // Note the use of template literals in combination with HTML
@@ -29,7 +35,7 @@ $(document).ready(function() {
           <span class="name">${tweetData.user.name}</span>
           <span class="handle">${tweetData.user.handle}</span>
         </header>
-        <p class="tweetbody">${tweetData.content.text}</p>
+        <p class="tweetbody">${escape(tweetData.content.text)}</p>
         <footer>
           <span class="posted">${tweetData.created_at}</span>
           <span class="icons">
@@ -77,6 +83,12 @@ $(document).ready(function() {
       .then(function() {loadTweets()});
     }
 
+  });
+
+  // Compose button handler which slides the text area up and down upon click.
+  var $composeButton = $('.compose');
+  $composeButton.click(function (event) {
+    $('.new-tweet').slideToggle()
   });
 
   //Call load tweets to populate homepage with list of tweets
