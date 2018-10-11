@@ -49,7 +49,8 @@ $(document).ready(function() {
 
   };
 
-  //Function to load the list of all tweets inside of the /tweets database
+  // Function to load the list of all tweets inside of the /tweets database.
+  // The loaded tweets are sorted as they're rendered.
   function loadTweets () {
 
     $.getJSON( "/tweets/", function (data) {
@@ -73,23 +74,43 @@ $(document).ready(function() {
     //Serialized data.  Should return "text=<whatever was typed>" if console logged.
     var $serialized = $(this).serialize();
 
+    // Error message handler
+    var $errorMessage = $('.error-message');
+
+
     if ($text === "") {
-      alert("Please enter a tweet.");
+      //Slides error message down and displays text.
+      $errorMessage.slideUp();
+      $errorMessage.slideDown().text("Nothing entered.  Please enter a tweet.");
     } else if ($charLen > 140) {
-      alert("You have reached the character limit.")
+      $errorMessage.slideUp();
+      $errorMessage.slideDown().text("You have reached the character limit.");
     } else {
-      // Post to serialized data to the /tweets/ URL
+      // Post to serialized data to the /tweets/ URL and hides error message.
+      $errorMessage.slideUp();
       $.post("/tweets/", $serialized)
       .then(function() {loadTweets()});
     }
 
   });
 
-  // Compose button handler which slides the text area up and down upon click.
+  // Compose button handler which slides the tweet text area up and down upon click.
+  // If the tweet text area is hidden, toggle it and focus on the text area.
+  // This if statement incorporates IE compatability due to problems with .focus()
+  // running on hidden items witin IE.
   var $composeButton = $('.compose');
   $composeButton.click(function (event) {
-    $('.new-tweet').slideToggle()
+
+    if ($('.new-tweet').is(":hidden")) {
+      $('.new-tweet').slideToggle();
+      $('.tweetinput').focus();
+    } else {
+      $('.new-tweet').slideToggle();
+    }
+
   });
+
+
 
   //Call load tweets to populate homepage with list of tweets
   loadTweets();

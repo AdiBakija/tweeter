@@ -22,6 +22,9 @@
     <!-- Posted Tweets CSS -->
     <link rel="stylesheet" href="/styles/posted-tweets.css" type="text/css" />
 
+    <!-- Posted Tweets CSS -->
+    <link rel="stylesheet" href="/styles/error-messages.css" type="text/css" />
+
   </head>
 
   <body>
@@ -42,6 +45,7 @@
         <h2>Compose Tweet</h2>
         <form id="submit-tweet" action="/tweets/" method="POST">
           <textarea class ="tweetinput" name="text" placeholder="What are you humming about?"></textarea>
+          <div class="error-message" hidden></div>
           <input type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
