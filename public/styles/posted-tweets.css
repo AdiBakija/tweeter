@@ -45,6 +45,7 @@ article.tweet .handle {
 article.tweet .tweetbody{
   padding:10px;;
   opacity: 1;
+  word-wrap: break-word;
 }
 
 article.tweet footer {

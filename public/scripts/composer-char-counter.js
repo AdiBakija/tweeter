@@ -8,8 +8,8 @@ $('.tweetinput').on('keyup', function() {
   //it a jQuery  object allowing us to access it's properties.
   let $tweetinput = $(this);
   //Accessed the length of input a user types.
-  let charLength = $tweetinput.val().length;
-  let count = 140 - charLength;
+  let $charLength = $tweetinput.val().length;
+  let count = 140 - $charLength;
   //Upate counter value to be the true count.
   $tweetinput.siblings('.counter').text(count);
 

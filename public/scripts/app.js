@@ -46,9 +46,14 @@ $(document).ready(function() {
   //Function to load the list of all tweets inside of the /tweets database
   function loadTweets () {
 
-    $.getJSON( "/tweets", function (data) {
-      renderTweets(data);
+    $.getJSON( "/tweets/", function (data) {
+      $( "#tweets-container" ).empty()
+      renderTweets(data.sort( function(a,b){
+      return b.created_at - a.created_at;
+      }));
+
     });
+
   };
 
   // Submit form handler for post requests
@@ -57,10 +62,20 @@ $(document).ready(function() {
     console.log("Handler for .submit() called.");
     // Prevent the submit buttons default properties from occurring.
     event.preventDefault();
+    var $text = $('.tweetinput').val();
+    var $charLen = $text.length
     //Serialized data.  Should return "text=<whatever was typed>" if console logged.
     var $serialized = $(this).serialize();
-    //Post to serialized data to the /tweets/ URL
-    $.post("/tweets/", $serialized);
+
+    if ($text === "") {
+      alert("Please enter a tweet.");
+    } else if ($charLen > 140) {
+      alert("You have reached the character limit.")
+    } else {
+      // Post to serialized data to the /tweets/ URL
+      $.post("/tweets/", $serialized)
+      .then(function() {loadTweets()});
+    }
 
   });
 
