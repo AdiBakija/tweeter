@@ -39,7 +39,7 @@ $(document).ready(function() {
         </header>
         <p class="tweetbody">${escape(tweetData.content.text)}</p>
         <footer>
-          <span class="posted">${tweetData.created_at}</span>
+          <span class="posted">${$.timeago(tweetData.created_at)}</span>
           <span class="icons">
             <ion-icon name="flag"></ion-icon>
             <ion-icon name="repeat"></ion-icon>
