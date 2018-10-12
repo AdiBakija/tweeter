@@ -18,4 +18,4 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that uses jQuery, AJAX
 - MongoDB 2.2.36 or above
 
 ## Final Product
-!["This is the main page of Tweeter!"](tweeter-main.png)
+!["This is the main page of Tweeter!"](docs/tweeter-main.png)
