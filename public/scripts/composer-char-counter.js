@@ -1,11 +1,7 @@
-// $(document).ready(function() {
-//   console.log("The DOM has been loaded");
-// });
-
-
 $('.tweetinput').on('keyup', function() {
+
   //"this" is just another way of saying the previously selected element, the $ makes
-  //it a jQuery  object allowing us to access it's properties.
+  //it a jQuery object allowing us to access it's properties.
   let $tweetinput = $(this);
   //Accessed the length of input a user types.
   let $charLength = $tweetinput.val().length;

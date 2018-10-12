@@ -11,7 +11,7 @@ $(document).ready(function() {
     // loops through tweets
     for (index of tweets) {
       // calls createTweetElement for each tweet
-      var $tweet = createTweetElement(index);
+      let $tweet = createTweetElement(index);
       // takes return value of createTweetElement and appends it to the
       // tweets container
       $('#tweets-container').append($tweet);
@@ -19,16 +19,18 @@ $(document).ready(function() {
 
   };
 
+  //Helper function to prevent cross site scripting.
   function escape(str) {
-    var div = document.createElement('div');
+    let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
   // Helper function that constructs NEW tweet elements based on DOM.
   function createTweetElement (tweetData) {
+
     // Note the use of template literals in combination with HTML
-   return `
+    return `
       <article class="tweet">
         <header>
           <img src=${tweetData.user.avatars.small}>
@@ -49,14 +51,15 @@ $(document).ready(function() {
 
   };
 
-  // Function to load the list of all tweets inside of the /tweets database.
-  // The loaded tweets are sorted as they're rendered.
+  // Function to load the list of all tweets inside of the /tweets/ database.
+  // The loaded tweets are sorted as they're rendered newest to oldest.
   function loadTweets () {
 
     $.getJSON( "/tweets/", function (data) {
+      //Empties the container and re-renders with new tweets.
       $( "#tweets-container" ).empty()
       renderTweets(data.sort( function(a,b){
-      return b.created_at - a.created_at;
+        return b.created_at - a.created_at;
       }));
 
     });
@@ -65,21 +68,21 @@ $(document).ready(function() {
 
   // Submit form handler for post requests
   $("#submit-tweet").submit(function(event) {
-    // Check to see that the submit went through
-    console.log("Handler for .submit() called.");
+
     // Prevent the submit buttons default properties from occurring.
     event.preventDefault();
-    var $text = $('.tweetinput').val();
-    var $charLen = $text.length
+    let $text = $('.tweetinput').val();
+    let $charLen = $text.length;
+
     //Serialized data.  Should return "text=<whatever was typed>" if console logged.
-    var $serialized = $(this).serialize();
+    let $serialized = $(this).serialize();
 
     // Error message handler
-    var $errorMessage = $('.error-message');
+    let $errorMessage = $('.error-message');
 
 
     if ($text === "") {
-      //Slides error message down and displays text.
+      // Slides error message down and displays text.
       $errorMessage.slideUp();
       $errorMessage.slideDown().text("Nothing entered.  Please enter a tweet.");
     } else if ($charLen > 140) {
@@ -98,7 +101,7 @@ $(document).ready(function() {
   // If the tweet text area is hidden, toggle it and focus on the text area.
   // This if statement incorporates IE compatability due to problems with .focus()
   // running on hidden items witin IE.
-  var $composeButton = $('.compose');
+  let $composeButton = $('.compose');
   $composeButton.click(function (event) {
 
     if ($('.new-tweet').is(":hidden")) {
@@ -109,8 +112,6 @@ $(document).ready(function() {
     }
 
   });
-
-
 
   //Call load tweets to populate homepage with list of tweets
   loadTweets();
